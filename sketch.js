@@ -3,7 +3,7 @@ function setupGlobalVariables() {
   yRes = windowHeight;
   minRes = min( xRes , yRes );
   
-  desiredMinNum = 20;
+  desiredMinNum = 15;
   dx = xRes / desiredMinNum;
   dy = yRes / desiredMinNum;
   
