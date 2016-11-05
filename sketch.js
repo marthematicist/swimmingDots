@@ -1,14 +1,28 @@
 function setupGlobalVariables() {
   xRes = windowWidth;
   yRes = windowHeight;
+  minRes = min( xRes , yRes );
   
-  desiredDiameter = 30;
+  desiredMinNum = 20;
+  dx = xRes / desiredMinNum;
+  dy = yRes / desiredMinNum;
   
-  M = floor( xRes / desiredDiameter );
-  N = floor( yRes / desiredDiameter );
+  M = 0;
+  N = 0;
+  dx = 0;
+  dy = 0;
   
-  dx = xRes / M;
-  dy = yRes / N;
+  if( xRes < yRes ) {
+    M = desiredMinNum;
+    dx = xRes / M;
+    N = floor( yRes / dx );
+    dy = yRes / N;
+  } else {
+    N = desiredMinNum;
+    dy = yRes / N;
+    M = floor( xRes / dy );
+    dx = xRes / M;
+  }
   
   a = 0.7;
   t = 0;
@@ -32,7 +46,7 @@ function draw() {
     for( n = 0 ; n < N ; n++ ) {
       fill(0);
       //ellipse( 0.5*dx + m*dx , 0.5*dy + n*dy , dx , dy );
-      ax = m/N*4*PI + 2*PI*t/T;
+      ax = m/M*4*PI + 2*PI*t/T;
       ay = n/N*4*PI + 2*PI*t/T;
       fill(0);
       ellipse( 0.5*dx + m*dx + (1-a)*sin(ax)*dx , 0.5*dy + n*dy + (1-a)*cos(ay)*dy , a*dx , a*dy );
