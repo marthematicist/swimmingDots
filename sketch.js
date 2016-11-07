@@ -48,7 +48,7 @@ function draw() {
       //ellipse( 0.5*dx + m*dx , 0.5*dy + n*dy , dx , dy );
       ax = m/M*4*PI + 2*PI*t/T;
       ay = n/N*4*PI + 2*PI*t/T;
-      fill(0,255,128);
+      fill(0);
       ellipse( 0.5*dx + m*dx + (1-a)*sin(ax)*dx , 0.5*dy + n*dy + (1-a)*cos(ay)*dy , a*dx , a*dy );
     }
   }
